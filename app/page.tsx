@@ -9,7 +9,7 @@ type UsersResponse = {
 };
 
 function getApiBaseUrl() {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "";
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "";
 
   if (!baseUrl) {
     return "";
@@ -55,17 +55,17 @@ export default function HomePage() {
 
       <div className="mt-8">
         {error && (
-          <p className="rounded-md border border-red-500/40 bg-red-500/10 px-3 py-2 text-sm text-red-200">
+          <p className="px-3 py-2 text-sm text-red-200 border rounded-md border-red-500/40 bg-red-500/10">
             {error}
           </p>
         )}
 
-        <div className="mt-4 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+        <div className="grid gap-4 mt-4 sm:grid-cols-2 md:grid-cols-3">
           {(users as any)?.map((user: User) => (
             <Link
-              key={(user as any).userId}
+              key={user.id}
               href={`/users/${user.id}`}
-              className="group rounded-xl border border-slate-800 bg-slate-900/40 p-4 transition hover:border-sky-500/60 hover:bg-slate-900"
+              className="p-4 transition border group rounded-xl border-slate-800 bg-slate-900/40 hover:border-sky-500/60 hover:bg-slate-900"
             >
               <div className="flex flex-col gap-1">
                 <span className="text-sm font-medium text-slate-50">
@@ -74,7 +74,7 @@ export default function HomePage() {
                 <span className="text-xs text-slate-400">{user.role}</span>
                 <span className="mt-2 text-xs text-slate-500">{user.email}</span>
               </div>
-              <span className="mt-3 inline-flex items-center text-xs font-medium text-sky-400 group-hover:text-sky-300">
+              <span className="inline-flex items-center mt-3 text-xs font-medium text-sky-400 group-hover:text-sky-300">
                 View profile
               </span>
             </Link>

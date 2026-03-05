@@ -15,7 +15,7 @@ export default function UserDetail({ user }: Props) {
 
   useEffect(() => {
     setDisplayName(user.name);
-  });
+  },[user.name]);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -25,7 +25,7 @@ export default function UserDetail({ user }: Props) {
   return (
     <section>
       <div className="mb-6">
-        <p className="text-sm uppercase tracking-wide text-slate-400">
+        <p className="text-sm tracking-wide uppercase text-slate-400">
           User profile
         </p>
         <h2 className="mt-1 text-2xl font-semibold text-slate-50">
@@ -35,7 +35,7 @@ export default function UserDetail({ user }: Props) {
         <p className="mt-2 text-sm text-slate-500">{user.email}</p>
       </div>
 
-      <div className="mb-6 rounded-xl border border-slate-800 bg-slate-900/40 p-4">
+      <div className="p-4 mb-6 border rounded-xl border-slate-800 bg-slate-900/40">
         <h3 className="text-sm font-medium text-slate-100">
           Display name settings
         </h3>
@@ -56,7 +56,7 @@ export default function UserDetail({ user }: Props) {
               type="text"
               value={displayName}
               onChange={(event) => setDisplayName(event.target.value)}
-              className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-50 outline-none ring-sky-500/70 placeholder:text-slate-500 focus:border-sky-500 focus:ring-1"
+              className="w-full px-3 py-2 text-sm border rounded-md outline-none border-slate-700 bg-slate-900 text-slate-50 ring-sky-500/70 placeholder:text-slate-500 focus:border-sky-500 focus:ring-1"
               placeholder="Enter a display name"
             />
           </div>

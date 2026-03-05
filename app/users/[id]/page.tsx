@@ -8,15 +8,16 @@ type PageProps = {
   };
 };
 
-export default function UserDetailPage({ params }: PageProps) {
-  const user = getUserById(params.id);
+export default async function UserDetailPage({ params }: PageProps) {
+  const { id } = await params
+  const user = getUserById(id);
 
   if (!user) {
     notFound();
   }
 
   return (
-    <div className="mx-auto max-w-xl">
+    <div className="max-w-xl mx-auto">
       <UserDetail user={user} />
     </div>
   );

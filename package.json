@@ -13,6 +13,7 @@
   "license": "ISC",
   "description": "A small Next.js User Dashboard application.",
   "dependencies": {
+    "@tailwindcss/postcss": "^4.2.1",
     "@types/node": "^25.3.1",
     "@types/react": "^19.2.14",
     "autoprefixer": "^10.4.27",
